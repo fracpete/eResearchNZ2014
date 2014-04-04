@@ -87,3 +87,11 @@ sympy-plots-for-*.tex/
 
 # xindy
 *.xdy
+
+# giteye
+/.project
+
+# vi
+.~
+*.swp
+
