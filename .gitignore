@@ -92,6 +92,9 @@ sympy-plots-for-*.tex/
 /.project
 
 # vi
-.~
+*~
 *.swp
 
+# other
+proposal/*.pdf
+*.kilepr
