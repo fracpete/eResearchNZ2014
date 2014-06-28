@@ -1,0 +1,50 @@
+# Project: adams
+# Date: 2014-06-28 18:58:05
+# User: fracpete
+#
+adams.flow.control.Flow
+	-actor
+		adams.flow.standalone.CallableActors
+			-actor
+				adams.flow.source.WekaClassifierSetup
+					-classifier
+						weka.classifiers.trees.RandomForest
+							-I
+							110
+							-K
+							0
+							-S
+							1
+							-num-slots
+							1
+	-actor
+		adams.flow.source.SelectFile
+			-stop-if-canceled
+			true
+			-file-chooser-title
+			Select training set
+			-extension
+			arff
+			-initial-file
+			${HOME}/documents/conferences/eResearchNZ2014/workshop/data/101_ObjectCategories-simple/train.arff
+	-actor
+		adams.flow.transformer.WekaFileReader
+			-loader
+				weka.core.converters.ArffLoader
+	-actor
+		adams.flow.transformer.WekaFilter
+			-filter
+				weka.filters.unsupervised.attribute.StringToNominal
+					-R
+					last
+	-actor
+		adams.flow.transformer.WekaClassSelector
+	-actor
+		adams.flow.transformer.WekaTrainClassifier
+	-actor
+		adams.flow.sink.WekaModelWriter
+			-output
+			${TMP}/101.model
+	-flow-execution-listener
+		adams.flow.execution.NullListener
+

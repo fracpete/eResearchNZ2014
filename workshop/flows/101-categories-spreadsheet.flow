@@ -1,0 +1,134 @@
+# Project: adams
+# Date: 2014-06-28 16:29:23
+# User: fracpete
+#
+adams.flow.control.Flow
+	-actor
+		adams.flow.source.SelectDirectory
+			-stop-if-canceled
+			true
+			-dir-chooser-title
+			Select parent dir with images
+			-initial-dir
+			${HOME}/documents/conferences/eResearchNZ2014/workshop/data/101_ObjectCategories-simple
+	-actor
+		adams.flow.transformer.SetVariable
+			-var-name
+			dir
+	-actor
+		adams.flow.control.Trigger
+			-name
+			init spreadsheet
+			-tee
+				adams.flow.source.NewSpreadSheet
+					-columns
+					Category,Count
+					-spreadsheet-type
+						adams.data.spreadsheet.SpreadSheet
+			-tee
+				adams.flow.transformer.SetStorageValue
+					-storage-name
+					sheet
+	-actor
+		adams.flow.control.Trigger
+			-name
+			list categories
+			-tee
+				adams.flow.source.FileSystemSearch
+					-search
+						adams.flow.source.filesystemsearch.DirectorySearch
+							-directory
+							@{dir}
+							-sorting
+							SORT_BY_NAME
+			-tee
+				adams.flow.transformer.SetVariable
+					-var-name
+					sub_dir
+			-tee
+				adams.flow.control.Trigger
+					-name
+					count
+					-tee
+						adams.flow.source.FileSystemSearch
+							-output-array
+							true
+							-search
+								adams.flow.source.filesystemsearch.FileSearch
+									-directory
+									@{sub_dir}
+									-regexp
+									.*\\.jpg
+									-sorting
+									SORT_BY_NAME
+					-tee
+						adams.flow.transformer.ArrayLength
+					-tee
+						adams.flow.transformer.SetVariable
+							-var-name
+							num
+			-tee
+				adams.flow.control.Tee
+					-name
+					determine category
+					-tee
+						adams.flow.transformer.BaseName
+					-tee
+						adams.flow.transformer.SetVariable
+							-var-name
+							category
+			-tee
+				adams.flow.control.Trigger
+					-name
+					add row
+					-tee
+						adams.flow.source.StorageValue
+							-storage-name
+							sheet
+					-tee
+						adams.flow.transformer.SpreadSheetInsertRow
+							-no-copy
+							true
+							-after
+							true
+					-tee
+						adams.flow.transformer.SpreadSheetSetCell
+							-name
+							set category
+							-no-copy
+							true
+							-row
+							last
+							-value
+							@{category}
+					-tee
+						adams.flow.transformer.SpreadSheetSetCell
+							-name
+							set count
+							-no-copy
+							true
+							-row
+							last
+							-col
+							2
+							-value
+							@{num}
+					-tee
+						adams.flow.transformer.SetStorageValue
+							-storage-name
+							sheet
+	-actor
+		adams.flow.control.Trigger
+			-name
+			display data
+			-tee
+				adams.flow.source.StorageValue
+					-storage-name
+					sheet
+			-tee
+				adams.flow.sink.SpreadSheetDisplay
+					-writer
+						adams.data.io.output.NullWriter
+	-flow-execution-listener
+		adams.flow.execution.NullListener
+

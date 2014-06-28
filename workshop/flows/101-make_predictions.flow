@@ -1,0 +1,56 @@
+# Project: adams
+# Date: 2014-06-28 19:02:59
+# User: fracpete
+#
+adams.flow.control.Flow
+	-actor
+		adams.flow.source.SelectFile
+			-stop-if-canceled
+			true
+			-file-chooser-title
+			Select image to classify
+			-extension
+			jpg
+			-initial-file
+			${HOME}/documents/conferences/eResearchNZ2014/workshop/data/101_ObjectCategories-simple/airplanes/image_0001.jpg
+			-initial-file
+			${HOME}/documents/conferences/eResearchNZ2014/workshop/data/101_ObjectCategories-simple/airplanes/image_0011.jpg
+	-actor
+		adams.flow.transformer.JAIReader
+	-actor
+		adams.flow.transformer.JAIFlattener
+			-flattener
+				adams.data.jai.flattener.Histogram
+	-actor
+		adams.flow.transformer.WekaFilter
+			-filter
+				weka.filters.unsupervised.attribute.Add
+					-T
+					NOM
+					-N
+					category
+					-L
+					Faces,airplanes
+					-C
+					last
+	-actor
+		adams.flow.transformer.WekaClassSelector
+	-actor
+		adams.flow.transformer.WekaClassifying
+			-model
+			${TMP}/101.model
+	-actor
+		adams.flow.control.ContainerValuePicker
+			-skip
+			true
+			-value
+			Classification label
+			-switch-outputs
+			true
+	-actor
+		adams.flow.sink.Display
+			-writer
+				adams.data.io.output.NullWriter
+	-flow-execution-listener
+		adams.flow.execution.NullListener
+
