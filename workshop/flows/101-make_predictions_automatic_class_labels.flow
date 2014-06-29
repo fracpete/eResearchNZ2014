@@ -1,5 +1,5 @@
 # Project: adams
-# Date: 2014-06-29 16:13:26
+# Date: 2014-06-29 21:34:27
 # User: fracpete
 #
 adams.flow.control.Flow
@@ -123,8 +123,6 @@ adams.flow.control.Flow
 					@{model}
 			-tee
 				adams.flow.control.ContainerValuePicker
-					-skip
-					true
 					-value
 					Classification label
 					-switch-outputs

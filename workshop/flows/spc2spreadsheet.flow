@@ -1,5 +1,5 @@
 # Project: adams
-# Date: 2014-06-29 11:45:04
+# Date: 2014-06-29 21:56:45
 # User: fracpete
 #
 adams.flow.control.Flow
@@ -45,6 +45,8 @@ adams.flow.control.Flow
 		adams.flow.control.Branch
 			-branch
 				adams.flow.sink.SpreadSheetDisplay
+					-num-decimals
+					5
 					-writer
 						adams.data.io.output.NullWriter
 			-branch
@@ -57,6 +59,8 @@ adams.flow.control.Flow
 									first-last
 					-actor
 						adams.flow.sink.SequencePlotter
+							-x
+							-3
 							-writer
 								adams.gui.print.NullWriter
 							-paintlet
