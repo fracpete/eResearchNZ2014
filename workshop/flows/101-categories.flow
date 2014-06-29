@@ -1,5 +1,5 @@
 # Project: adams
-# Date: 2014-06-28 16:25:37
+# Date: 2014-06-28 19:14:02
 # User: fracpete
 #
 adams.flow.control.Flow
@@ -10,7 +10,7 @@ adams.flow.control.Flow
 			-dir-chooser-title
 			Select parent dir with images
 			-initial-dir
-			${HOME}/documents/conferences/eResearchNZ2014/workshop/data/101_ObjectCategories-simple
+			${HOME}/documents/conferences/eResearchNZ2014/workshop/data/101_ObjectCategories
 	-actor
 		adams.flow.transformer.SetVariable
 			-var-name

@@ -1,5 +1,5 @@
 # Project: adams
-# Date: 2014-06-28 18:53:57
+# Date: 2014-06-28 19:14:35
 # User: fracpete
 #
 adams.flow.control.Flow
@@ -166,7 +166,7 @@ adams.flow.control.Flow
 			-extension
 			arff
 			-initial-file
-			${HOME}/documents/conferences/eResearchNZ2014/workshop/data/101_ObjectCategories-simple/train.arff
+			${HOME}/documents/conferences/eResearchNZ2014/workshop/data/101_ObjectCategories-2classes/train.arff
 	-actor
 		adams.flow.transformer.WekaFileReader
 			-loader

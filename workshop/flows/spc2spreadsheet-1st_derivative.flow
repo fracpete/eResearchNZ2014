@@ -1,5 +1,5 @@
 # Project: adams
-# Date: 2014-06-29 11:45:04
+# Date: 2014-06-29 15:50:01
 # User: fracpete
 #
 adams.flow.control.Flow
@@ -21,6 +21,16 @@ adams.flow.control.Flow
 			library(hyperSpec)\nspc = hyperSpec::read.spc(\"@{file}\")\ndata = attr(spc, \"data\")\nv = data[3]\nas.matrix(v, ncol = 700)
 			-return-type
 			DoubleMatrix
+	-actor
+		adams.flow.transformer.Jython
+			-script
+			${HOME}/documents/conferences/eResearchNZ2014/workshop/flows/spc2spreadsheet.py
+	-actor
+		adams.flow.transformer.Groovy
+			-skip
+			true
+			-script
+			${HOME}/documents/conferences/eResearchNZ2014/workshop/flows/spc2spreadsheet.groovy
 	-actor
 		adams.flow.transformer.Convert
 			-conversion

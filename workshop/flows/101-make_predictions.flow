@@ -1,5 +1,5 @@
 # Project: adams
-# Date: 2014-06-28 19:02:59
+# Date: 2014-06-28 19:16:08
 # User: fracpete
 #
 adams.flow.control.Flow
@@ -8,13 +8,35 @@ adams.flow.control.Flow
 			-stop-if-canceled
 			true
 			-file-chooser-title
-			Select image to classify
+			Select images to classify
 			-extension
 			jpg
 			-initial-file
-			${HOME}/documents/conferences/eResearchNZ2014/workshop/data/101_ObjectCategories-simple/airplanes/image_0001.jpg
+			${HOME}/documents/conferences/eResearchNZ2014/workshop/data/101_ObjectCategories-2classes.test/airplanes/image_0011.jpg
 			-initial-file
-			${HOME}/documents/conferences/eResearchNZ2014/workshop/data/101_ObjectCategories-simple/airplanes/image_0011.jpg
+			${HOME}/documents/conferences/eResearchNZ2014/workshop/data/101_ObjectCategories-2classes.test/airplanes/image_0030.jpg
+			-initial-file
+			${HOME}/documents/conferences/eResearchNZ2014/workshop/data/101_ObjectCategories-2classes.test/airplanes/image_0044.jpg
+			-initial-file
+			${HOME}/documents/conferences/eResearchNZ2014/workshop/data/101_ObjectCategories-2classes.test/airplanes/image_0061.jpg
+			-initial-file
+			${HOME}/documents/conferences/eResearchNZ2014/workshop/data/101_ObjectCategories-2classes.test/airplanes/image_0081.jpg
+			-initial-file
+			${HOME}/documents/conferences/eResearchNZ2014/workshop/data/101_ObjectCategories-2classes.test/airplanes/image_0115.jpg
+			-initial-file
+			${HOME}/documents/conferences/eResearchNZ2014/workshop/data/101_ObjectCategories-2classes.test/airplanes/image_0150.jpg
+			-initial-file
+			${HOME}/documents/conferences/eResearchNZ2014/workshop/data/101_ObjectCategories-2classes.test/airplanes/image_0185.jpg
+			-initial-file
+			${HOME}/documents/conferences/eResearchNZ2014/workshop/data/101_ObjectCategories-2classes.test/airplanes/image_0220.jpg
+			-initial-file
+			${HOME}/documents/conferences/eResearchNZ2014/workshop/data/101_ObjectCategories-2classes.test/airplanes/image_0251.jpg
+			-initial-file
+			${HOME}/documents/conferences/eResearchNZ2014/workshop/data/101_ObjectCategories-2classes.test/airplanes/image_0286.jpg
+			-initial-file
+			${HOME}/documents/conferences/eResearchNZ2014/workshop/data/101_ObjectCategories-2classes.test/airplanes/image_0324.jpg
+			-initial-file
+			${HOME}/documents/conferences/eResearchNZ2014/workshop/data/101_ObjectCategories-2classes.test/airplanes/image_0356.jpg
 	-actor
 		adams.flow.transformer.JAIReader
 	-actor
